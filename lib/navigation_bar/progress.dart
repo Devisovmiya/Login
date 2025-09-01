@@ -13,18 +13,21 @@ class Progress extends StatelessWidget {
     Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-      Expanded(child:Column(
-          children: [
-            Text('Miestones'),
-            Text('Deadlines'),
-            Text('Status Updates'),
-            Text('Roadmap'),
-          ]
+      Container(
+        margin: EdgeInsets.all(20),
+        child: Column(
+            children: [
+              Text('Miestones'),
+              Text('Deadlines'),
+              Text('Status Updates'),
+              Text('Roadmap'),
+            ]
+        ),
       )
-       )
-        
+      
       ],
     )
     );
+  
   }
 }

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:login_page/login_screen.dart';
+import 'package:login/login_screen.dart';
 //import 'package:login_page/signup_screen.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -13,10 +13,10 @@ class SettingsPage extends StatefulWidget {
 }
 
 class _SettingsPageState extends State<SettingsPage> {
-  String? savedName;
-  String? savedEmail;
+  String? savedName;              //to store the name
+  String? savedEmail;        //to store the email id
   @override
-  void initState() {
+  void initState() {                //to initialize the state and get the values
     super.initState();
     getValues();
   }
@@ -34,12 +34,14 @@ class _SettingsPageState extends State<SettingsPage> {
     return Center(
       child: Scaffold(
         backgroundColor: const Color.fromARGB(195, 79, 243, 175),
+        //header of the screen
         appBar: AppBar(title: Text('Settings')),
+        //body of the screen
         body: Padding(
           padding: EdgeInsets.all(16),
           child: Center(
             child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
+              crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 Column(
                   children: [
@@ -59,15 +61,15 @@ class _SettingsPageState extends State<SettingsPage> {
                     ),
 
                     Text(
-                      "Name: $savedName",
-                      style: GoogleFonts.metamorphous(
+                      "Name: $savedName",               //to display saved name
+                      style: GoogleFonts.adventPro(
                         fontSize: 25,
                         fontWeight: FontWeight.bold,
                       ),
                     ),
                     Text(
-                      "EmailId:$savedEmail ",
-                      style: GoogleFonts.metamorphous(
+                      "EmailId:$savedEmail ",     //to display saved email id
+                      style: GoogleFonts.adventPro(
                         fontSize: 25,
                         fontWeight: FontWeight.bold,
                       ),
@@ -90,15 +92,18 @@ class _SettingsPageState extends State<SettingsPage> {
                 SizedBox(height: 20),
 
                 Center(
+                  
                   child: ElevatedButton.icon(
                     icon: Icon(Icons.logout),
                     label: Text('Logout'),
                     style: ElevatedButton.styleFrom(
                       backgroundColor: const Color.fromARGB(255, 235, 240, 163),
                     ),
-                    onPressed: () => Navigator.pushAndRemoveUntil(
+
+                       //to navigate to login screen and remove all previous screens
+                    onPressed: () => Navigator.pushAndRemoveUntil(      
                       context,
-                      MaterialPageRoute(builder: (_) => LoginScreen()),
+                      MaterialPageRoute(builder: (context) => LoginScreen()),
                       (r) => false,
                     ),
                   ),

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:login_page/login_screen.dart';
+import 'package:login/login_screen.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class SignupScreen extends StatelessWidget {
@@ -41,6 +41,7 @@ class SignupScreen extends StatelessWidget {
                   vertical: 15,
                   horizontal: 250,
                 ),
+                //name textfield
                 child: TextField(
                   controller: userName,
                   decoration: InputDecoration(
@@ -58,6 +59,7 @@ class SignupScreen extends StatelessWidget {
                   ),
                 ),
               ),
+              
               //Email
               Padding(
                 padding: const EdgeInsets.symmetric(
@@ -91,6 +93,7 @@ class SignupScreen extends StatelessWidget {
                 ),
                 child: TextField(
                   controller: passwordctrl,
+                  obscureText: true,
                   decoration: InputDecoration(
                     labelText: 'Password',
                     labelStyle: GoogleFonts.openSans(
@@ -116,6 +119,7 @@ class SignupScreen extends StatelessWidget {
                 ),
                 child: TextField(
                   controller: confrimPassword,
+                  obscureText: true,
                   decoration: InputDecoration(
                     labelText: 'Confrim Password',
                     labelStyle: GoogleFonts.openSans(
@@ -136,11 +140,13 @@ class SignupScreen extends StatelessWidget {
 
           //button
           ElevatedButton.icon(
+            //validations and saving to shared preferences
+            icon: Icon(Icons.app_registration_outlined),
             onPressed: () async {
               final email = emailctrl.text;
               final pass = confrimPassword.text;
               final uName = userName.text;
-
+                //simple validation
               if (passwordctrl.text == confrimPassword.text &&
                   (emailctrl).toString().contains('@gmail.com')) {
                 ScaffoldMessenger.of(context).showSnackBar(
@@ -149,7 +155,7 @@ class SignupScreen extends StatelessWidget {
                 //saved to shared preferences
 
                 final prefers = await SharedPreferences.getInstance();
-                await prefers.setString('email',email); //}these are get by another variable in looginscreen for validation
+                await prefers.setString('email',email); //these will get by another variable in loginscreen for validation
                 await prefers.setString('password', pass);
                 await prefers.setString('name', uName); //by their key name
 

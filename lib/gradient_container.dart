@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'login_screen.dart';
 
-var startAlignment = Alignment.topLeft;
+var startAlignment = Alignment.topLeft;      //only for linear gradient
 var endAlignment = Alignment.bottomRight;
 
 class GradientContainer extends StatelessWidget {
@@ -15,8 +15,8 @@ class GradientContainer extends StatelessWidget {
   @override
   Widget build(context) {
     return Container(
-      width: double.infinity,
-      height: double.infinity,
+     // width: double.infinity,
+     // height: double.infinity,
       decoration: BoxDecoration(
         gradient: LinearGradient(
           colors: [color1, color2],
